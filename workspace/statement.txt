@@ -1,0 +1,1 @@
+Create a game of pong in pygame, make the ai logic try to return the ball. No sound or image files needed
