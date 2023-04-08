@@ -77,6 +77,31 @@ This is still a work in progress so use it at your own discretion, items to add 
 
 
 
+## Future work 
+
+
+*Modularize the code*: Separate the code into multiple Python modules based on functionality. For example, create a separate module for interacting with the OpenAI API, another for parsing YAML files, and another for handling user input and main program flow.
+
+*Use configuration files*: Instead of hardcoding the API key and other settings in the code, use a configuration file (e.g., JSON, YAML, or INI) to store these settings. This will make it easier to manage and update the configuration without modifying the code.
+
+*Add error handling and validation*: Improve error handling and validation throughout the code. For example, validate user input, check for the existence of required files, and handle exceptions that might be raised when interacting with external services (e.g., OpenAI API).
+
+*Add logging*: Implement a proper logging system to capture important events, warnings, and errors during the execution of the application. This will make it easier to troubleshoot and understand the program flow.
+
+*Improve user interface*: Enhance the user interface by using a more user-friendly library like prompt_toolkit or even building a web interface for a better user experience.
+
+*Add unit tests*: Write unit tests for different modules and functions to ensure the reliability and correctness of the code. This will help you catch bugs and regressions before they reach production.
+
+*Add documentation*: Add docstrings to functions and classes to provide more information about their purpose and usage. This will make the code easier to understand and maintain.
+
+*Use environment variables for sensitive information*: Instead of storing the OpenAI API key in a file, use environment variables to store sensitive information like API keys. This will make it easier to manage secrets and improve security.
+
+*Use a package manager*: Utilize a package manager like pipenv or poetry to manage dependencies and virtual environments, making it easier for others to set up and use the project.
+
+*Implement a progress indicator*: When generating code or interacting with external services like the OpenAI API, display a progress indicator to give the user feedback on the progress of the operation. This can be a simple spinner or a more advanced progress bar.
+
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
