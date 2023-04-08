@@ -48,6 +48,17 @@ python main.py
 
 Follow the prompts to describe your problem, and the application will classify the problem, decompose it into smaller deliverables, and generate code for each deliverable.
 
+## Limitations
+
+This is still a work in progress so use it at your own discretion, items to add are:
+
+1. Recursive debugging
+2. Better sub componentisation
+3. Consistent sub componentisation
+4. Logging
+
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
