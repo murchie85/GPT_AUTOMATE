@@ -4,6 +4,21 @@
 
 Automator V 0.1 is a Python-based project that uses OpenAI's GPT-3.5-turbo model to help decompose software development problems into smaller deliverables and generate code for the specified deliverables.
 
+
+## What can I do?
+
+
+- Create me pong in pygame
+- Create me a blogging platform
+- Create me a website scraper
+
+# What it does
+
+1. Takes your command
+2. Creates all the resources you need in the `output` folder
+
+**NOTE** You need to do the cleanup of your outputs for now.
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -56,6 +71,7 @@ This is still a work in progress so use it at your own discretion, items to add 
 2. Better sub componentisation
 3. Consistent sub componentisation
 4. Logging
+5. Automated archiving of output folder
 
 
 
