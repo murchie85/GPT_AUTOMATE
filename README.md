@@ -63,6 +63,8 @@ python main.py
 
 Follow the prompts to describe your problem, and the application will classify the problem, decompose it into smaller deliverables, and generate code for each deliverable.
 
+The work will be in the output folder
+
 ## Limitations
 
 This is still a work in progress so use it at your own discretion, items to add are:
