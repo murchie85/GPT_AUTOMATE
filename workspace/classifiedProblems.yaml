@@ -1,96 +1,77 @@
 - DELIVERABLE: 1
   Solution:
-    - Create a web scraper using Python and BeautifulSoup library to scrape forex prices from various websites
-    - Set up a PostgreSQL database to store scraped data
-    - Implement a function to insert scraped data into the database
-    - Implement a basic prototype for predicting forex prices for the next five days using linear regression
-  Dependencies: Python, BeautifulSoup, PostgreSQL
+    - Use Python to create scripts for scraping forex prices from various sources
+    - Create a MongoDB database and collection to store the scraped forex prices
+    - Write functions to retrieve and store the scraped forex prices in the database
+    - Implement a basic prediction algorithm using historical data to predict next prices for the next five days
+    - Create a basic API endpoint to retrieve the predicted prices
+  Dependencies: Python, MongoDB
   SharedState: N/A
   AdditionalNotes: N/A
   RUNTIME_INSTRUCTIONS:
-    FILENAME: scraper.py
-    RELIES_ON: requirements.txt
+    FILENAME: forex_scraper.py
+    RELIES_ON: pymongo, requests, bs4
     IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 1
-    EXECUTION_COMMAND: python scraper.py
+    EXECUTION_COMMAND: python forex_scraper.py
     LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: BeautifulSoup, psycopg2, numpy, pandas, scikit-learn
+    LIBRARIES: pymongo, requests, bs4
 
 - DELIVERABLE: 2
   Solution:
-    - Implement authentication using Flask-Login library
-    - Build a REST API using Flask and Flask-RESTful
-    - Add endpoints to get all scraped forex data from the database
-    - Add endpoints to post new forex data to the database
-  Dependencies: Python, Flask, Flask-Login, Flask-RESTful, PostgreSQL
+    - Create a frontend using React to display the scraped forex prices from the API endpoint
+    - Implement pagination and search functionality to filter and limit the number of displayed prices
+    - Integrate charting libraries to display graphs/chart of historical and predicted forex prices 
+  Dependencies: React
   SharedState: N/A
-  AdditionalNotes: Uses existing database connection and scraper from Deliverable 1
+  AdditionalNotes: Uses existing API endpoint from Deliverable 1
   RUNTIME_INSTRUCTIONS:
-    FILENAME: api.py
-    RELIES_ON: scraper.py, requirements.txt
-    IS_LIBRARY: False
+    FILENAME: forex_display.js
+    RELIES_ON: axios, react-chartjs-2, react-redux
+    IS_LIBRARY: True
     LOCATION: root
     EXECUTION_ORDER: 2
-    EXECUTION_COMMAND: python api.py
-    LANGUAGE: Python
+    EXECUTION_COMMAND: N/A
+    LANGUAGE: JavaScript
     ENV_VARS: N/A
-    LIBRARIES: Flask, Flask-Login, Flask-RESTful, psycopg2
+    LIBRARIES: axios, react-chartjs-2, react-redux
 
 - DELIVERABLE: 3
   Solution:
-    - Build a frontend using React and React-Bootstrap
-    - Implement a dashboard to display scraped forex data
-    - Populate the dashboard with data retrieved from the REST API
-    - Add user authentication using auth0
-  Dependencies: Node.js, React, React-Bootstrap, auth0
-  SharedState: N/A
-  AdditionalNotes: Uses existing authentication and API from Deliverable 2
+    - Implement a user authentication system using Passport.js to allow registered users to save stocks and forex prices to their portfolio
+    - Write additional functions to manage user portfolio data in the database
+    - Add functionality for displaying user portfolio data
+  Dependencies: MongoDB, Node.js, Express, React
+  SharedState: Passport.js
+  AdditionalNotes: 
   RUNTIME_INSTRUCTIONS:
-    FILENAME: dashboard.js
-    RELIES_ON: package.json, api.py
-    IS_LIBRARY: False
-    LOCATION: frontend
+    FILENAME: user_authentication.js
+    RELIES_ON: passport, express-session, connect-mongo
+    IS_LIBRARY: True
+    LOCATION: root
     EXECUTION_ORDER: 3
-    EXECUTION_COMMAND: npm start
+    EXECUTION_COMMAND: N/A
     LANGUAGE: JavaScript
     ENV_VARS: N/A
-    LIBRARIES: React, React-Bootstrap
+    LIBRARIES: passport, express-session, connect-mongo
 
 - DELIVERABLE: 4
   Solution:
-    - Implement a basic prototype for predicting forex prices for the next five days using linear regression and data retrieved from the REST API
-    - Add chart displays to the dashboard to show predicted forex prices
-  Dependencies: Python, Flask, Flask-RESTful, PostgreSQL, React, React-Bootstrap
+    - Build a feature to allow users to compare and analyze different forex pairs
+    - Integrate third-party charting libraries to compare and graph forex pair data
+  Dependencies: React
   SharedState: N/A
-  AdditionalNotes: Uses existing REST API from Deliverable 2
+  AdditionalNotes: Uses existing API endpoint from Deliverable 1
   RUNTIME_INSTRUCTIONS:
-    FILENAME: prediction.py
-    RELIES_ON: api.py, requirements.txt
+    FILENAME: compare_forex_pairs.js
+    RELIES_ON: chart.js, axios
     IS_LIBRARY: True
     LOCATION: root
     EXECUTION_ORDER: 4
     EXECUTION_COMMAND: N/A
-    LANGUAGE: Python
-    ENV_VARS: N/A
-    LIBRARIES: Flask, Flask-RESTful, psycopg2, numpy, pandas, scikit-learn
-
-- DELIVERABLE: 5
-  Solution:
-    - Add functionality to download forex data as CSV files
-    - Add functionality to download predicted forex prices as CSV files
-  Dependencies: Python, Flask, Flask-RESTful, PostgreSQL, React, React-Bootstrap
-  SharedState: N/A
-  AdditionalNotes: Uses existing REST API from Deliverable 2
-  RUNTIME_INSTRUCTIONS:
-    FILENAME: downloads.js
-    RELIES_ON: api.py, prediction.py
-    IS_LIBRARY: True
-    LOCATION: frontend
-    EXECUTION_ORDER: 5
-    EXECUTION_COMMAND: N/A
     LANGUAGE: JavaScript
     ENV_VARS: N/A
-    LIBRARIES: React, React-Bootstrap
+    LIBRARIES: chart.js, axios
 
