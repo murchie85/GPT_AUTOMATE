@@ -1,76 +1,96 @@
 - DELIVERABLE: 1
   Solution:
-    - Create two paddles and a ball using pygame graphics
-    - Implement user-controlled movement of one of the paddles using arrow keys
-    - Implement movement of other paddle as AI (computer controlled) by tracking the ball's movement and changing the paddle's position accordingly
-    - Detect collision between ball and paddles and change direction of ball accordingly
-  Dependencies: pygame
+    - Create a web scraper using Python and BeautifulSoup library to scrape forex prices from various websites
+    - Set up a PostgreSQL database to store scraped data
+    - Implement a function to insert scraped data into the database
+    - Implement a basic prototype for predicting forex prices for the next five days using linear regression
+  Dependencies: Python, BeautifulSoup, PostgreSQL
   SharedState: N/A
   AdditionalNotes: N/A
   RUNTIME_INSTRUCTIONS:
-    FILENAME: main.py
-    RELIES_ON: N/A
+    FILENAME: scraper.py
+    RELIES_ON: requirements.txt
     IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 1
-    EXECUTION_COMMAND: python main.py
+    EXECUTION_COMMAND: python scraper.py
     LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: pygame
+    LIBRARIES: BeautifulSoup, psycopg2, numpy, pandas, scikit-learn
 
 - DELIVERABLE: 2
   Solution:
-    - Implement score tracking for both players and display on screen
-    - Add basic menu screen with options for starting a new game or quitting
-    - Implement game over screen with option to return to main menu or restart game
-  Dependencies: pygame
+    - Implement authentication using Flask-Login library
+    - Build a REST API using Flask and Flask-RESTful
+    - Add endpoints to get all scraped forex data from the database
+    - Add endpoints to post new forex data to the database
+  Dependencies: Python, Flask, Flask-Login, Flask-RESTful, PostgreSQL
   SharedState: N/A
-  AdditionalNotes: Uses existing code and assets from Deliverable 1
+  AdditionalNotes: Uses existing database connection and scraper from Deliverable 1
   RUNTIME_INSTRUCTIONS:
-    FILENAME: menus.py
-    RELIES_ON: main.py
-    IS_LIBRARY: True
+    FILENAME: api.py
+    RELIES_ON: scraper.py, requirements.txt
+    IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 2
-    EXECUTION_COMMAND: N/A
+    EXECUTION_COMMAND: python api.py
     LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: pygame
+    LIBRARIES: Flask, Flask-Login, Flask-RESTful, psycopg2
 
 - DELIVERABLE: 3
   Solution:
-    - Add sound effects for ball bouncing off paddles and hitting the walls
-    - Implement background music during gameplay
-    - Add difficulty levels (easy, medium, hard) that affect the speed of the ball and the intelligence of the AI paddle
-  Dependencies: pygame
+    - Build a frontend using React and React-Bootstrap
+    - Implement a dashboard to display scraped forex data
+    - Populate the dashboard with data retrieved from the REST API
+    - Add user authentication using auth0
+  Dependencies: Node.js, React, React-Bootstrap, auth0
   SharedState: N/A
-  AdditionalNotes: Uses existing code and assets from Deliverable 1 and 2
+  AdditionalNotes: Uses existing authentication and API from Deliverable 2
   RUNTIME_INSTRUCTIONS:
-    FILENAME: soundAndDifficulty.py
-    RELIES_ON: menus.py
-    IS_LIBRARY: True
-    LOCATION: root
+    FILENAME: dashboard.js
+    RELIES_ON: package.json, api.py
+    IS_LIBRARY: False
+    LOCATION: frontend
     EXECUTION_ORDER: 3
-    EXECUTION_COMMAND: N/A
-    LANGUAGE: Python
+    EXECUTION_COMMAND: npm start
+    LANGUAGE: JavaScript
     ENV_VARS: N/A
-    LIBRARIES: pygame
+    LIBRARIES: React, React-Bootstrap
 
 - DELIVERABLE: 4
   Solution:
-    - Add visuals for power-ups that appear randomly during gameplay and affect the ball's speed or paddle size
-    - Implement multiplayer functionality for two players on the same computer
-  Dependencies: pygame
+    - Implement a basic prototype for predicting forex prices for the next five days using linear regression and data retrieved from the REST API
+    - Add chart displays to the dashboard to show predicted forex prices
+  Dependencies: Python, Flask, Flask-RESTful, PostgreSQL, React, React-Bootstrap
   SharedState: N/A
-  AdditionalNotes: Uses existing code and assets from Deliverable 1, 2, and 3
+  AdditionalNotes: Uses existing REST API from Deliverable 2
   RUNTIME_INSTRUCTIONS:
-    FILENAME: powerUpsAndMultiplayer.py
-    RELIES_ON: soundAndDifficulty.py
+    FILENAME: prediction.py
+    RELIES_ON: api.py, requirements.txt
     IS_LIBRARY: True
     LOCATION: root
     EXECUTION_ORDER: 4
     EXECUTION_COMMAND: N/A
     LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: pygame
+    LIBRARIES: Flask, Flask-RESTful, psycopg2, numpy, pandas, scikit-learn
+
+- DELIVERABLE: 5
+  Solution:
+    - Add functionality to download forex data as CSV files
+    - Add functionality to download predicted forex prices as CSV files
+  Dependencies: Python, Flask, Flask-RESTful, PostgreSQL, React, React-Bootstrap
+  SharedState: N/A
+  AdditionalNotes: Uses existing REST API from Deliverable 2
+  RUNTIME_INSTRUCTIONS:
+    FILENAME: downloads.js
+    RELIES_ON: api.py, prediction.py
+    IS_LIBRARY: True
+    LOCATION: frontend
+    EXECUTION_ORDER: 5
+    EXECUTION_COMMAND: N/A
+    LANGUAGE: JavaScript
+    ENV_VARS: N/A
+    LIBRARIES: React, React-Bootstrap
 

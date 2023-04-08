@@ -7,6 +7,8 @@ Automator V 0.1 is a Python-based project that uses OpenAI's GPT-3.5-turbo model
 
 ## What can I do?
 
+![](sample.png)  
+
 
 - Create me pong in pygame
 - Create me a blogging platform

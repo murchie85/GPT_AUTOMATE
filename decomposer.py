@@ -3,13 +3,14 @@ import yaml
 import re
 import pprint 
 from termcolor      import colored, cprint 
+import os
 
 
 def generate_code(prompt):
     # ----------------- CALL OPEN AI
 
-    #keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
-    keyFile = open('.TOKEN.txt','r')
+    keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
+    #keyFile = open('.TOKEN.txt','r')
     openai.api_key    = keyFile.read()
 
     availableResponses   = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
@@ -44,7 +45,7 @@ def process_deliverable(yaml_content, desired_deliverable):
     code_chunk = None
     chunkCount = 0
     while code_chunk != "":
-        prompt = f"You are given a YAML file that describes a project broken into multiple deliverables. Your task is to generate code for the specified deliverable in chunks of 400 lines at a time. DO NOT add any extra words, just provide only the code. If there is no more code to provide, just return ##JOB_COMPLETE## \n\nPlease process DELIVERABLE: {desired_deliverable}. \n\n{yaml_content}\n\nPreviously generated code (if any):\n{code_chunk}\n\nGenerate the next 400 lines:"
+        prompt = f"You are given a YAML file that describes a project broken into multiple deliverables. Your task is to generate code for the specified deliverable in chunks of 150 lines at a time. DO NOT add any extra words, just provide only the code. If there is no more code to provide, just return ##JOB_COMPLETE## \n\nPlease process DELIVERABLE: {desired_deliverable}. \n\n{yaml_content}\n\nPreviously generated code (if any):\n{code_chunk}\n\nGenerate the next 400 lines:"
         cprint(prompt + '\n**prompt ends**', 'blue')
 
         # SENDING REQUEST
@@ -53,6 +54,10 @@ def process_deliverable(yaml_content, desired_deliverable):
         chunkCount += 1
         print(code_chunk)
         cprint('Received, saving...', 'white')
+
+
+        # Create location if not exist
+        os.makedirs(location, exist_ok=True)
 
         with open(f"{location}/{filename}", "a") as f:
             f.write(code_chunk)

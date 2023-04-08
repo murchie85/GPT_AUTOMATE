@@ -134,8 +134,8 @@ class ProblemClassifier:
 
         # ----------------- CALL OPEN AI
 
-        #keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
-        keyFile = open('.TOKEN.txt','r')
+        keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
+        #keyFile = open('.TOKEN.txt','r')
         openai.api_key    = keyFile.read()
 
 
