@@ -4,6 +4,8 @@
 
 Automator V 0.1 is a Python-based project that uses OpenAI's GPT-3.5-turbo model to help decompose software development problems into smaller deliverables and generate code for the specified deliverables.
 
+*contact Adam McMurchie to report issues or post them here*
+
 
 ## What can I do?
 
