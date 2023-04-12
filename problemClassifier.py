@@ -135,8 +135,9 @@ class ProblemClassifier:
         # ----------------- CALL OPEN AI
 
         #keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
-        keyFile = open('.TOKEN.txt','r')
-        openai.api_key    = keyFile.read()
+        #keyFile = open('.TOKEN.txt','r')
+        #openai.api_key      = keyFile.read()
+        openai.api_key       = os.environ["OPENAI_API_KEY"]
 
 
         availableResponses   = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
