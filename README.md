@@ -50,9 +50,13 @@ pip install -r requirements.txt
 
 ```bash
 export OPENAI_API_KEY="your-openai-api-key"
-
 ```
 
+Or you can create a .TOKEN.txt file in the root directory of the project and add your OpenAI API key.
+
+```bash
+echo "your-openai-api-key" > .TOKEN.txt
+```
 
 ## Usage
 

@@ -6,15 +6,16 @@ from termcolor      import colored, cprint
 import os
 
 
-def generate_code(prompt):
-    # ----------------- CALL OPEN AI
-
-    openai.api_key = os.environ["OPENAI_API_KEY"]
-    availableResponses   = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
+def generate_code(prompt,openaiObject):
+    
+    print('')
+    cprint('Sending Request', 'yellow',attrs=['blink'])
+    availableResponses   = openaiObject.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
     currentResponse = availableResponses['choices'][0]['message']['content'].lstrip()
+
     return currentResponse
 
-def process_deliverable(yaml_content, desired_deliverable):
+def process_deliverable(yaml_content, desired_deliverable,openaiObject):
     
     # Find the desired deliverable
     deliverable = None
@@ -37,7 +38,9 @@ def process_deliverable(yaml_content, desired_deliverable):
     print("FILENAME IS ")
     print(filename)
 
-    input('ready to generate code?')
+    print('')
+    cprint('ready to generate code?','white',attrs=['bold'])
+    input('')
     # Generate and append code in chunks of 400 lines
     code_chunk = None
     chunkCount = 0
@@ -46,8 +49,7 @@ def process_deliverable(yaml_content, desired_deliverable):
         cprint(prompt + '\n**prompt ends**', 'blue')
 
         # SENDING REQUEST
-        cprint('Sending Request', 'yellow',attrs=['blink'])
-        code_chunk = generate_code(prompt)
+        code_chunk = generate_code(prompt,openaiObject)
         chunkCount += 1
         print(code_chunk)
         cprint('Received, saving...', 'white')
@@ -72,7 +74,7 @@ def process_deliverable(yaml_content, desired_deliverable):
 
 
 
-def decompose():
+def decompose(openaiObject):
     # Usage:
     file_path = 'workspace/classifiedProblems.yaml'
     with open(file_path, 'r') as file:
@@ -92,4 +94,4 @@ def decompose():
 
     desired_deliverable = 0
     for n in range(len(yaml_content)):
-        process_deliverable(yaml_content, n+1)
+        process_deliverable(yaml_content, n+1,openaiObject)

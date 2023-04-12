@@ -17,7 +17,7 @@ class ProblemClassifier:
         self.problemStatement        = ''
         self.no_deliverables         = 0
 
-    def get_requirements(self):
+    def get_requirements(self,openaiObject):
 
         # -----------------GET USER REQUIREMENT
 
@@ -34,8 +34,6 @@ class ProblemClassifier:
         # -----------------CONSTRUCT THE PROMPT
 
 
-
-        cprint('Classifying', 'yellow',attrs=['blink'])
         prompt = f"""
         This is an automation pipeline, please respond exactly as described below, do not deviate.
         First, quantify this problem: {user_input}
@@ -134,15 +132,14 @@ class ProblemClassifier:
 
         # ----------------- CALL OPEN AI
 
-        #keyFile = open('/Users/adammcmurchie/code/tools/davinci/.KEY.txt','r')
-        #keyFile = open('.TOKEN.txt','r')
-        #openai.api_key      = keyFile.read()
-        openai.api_key       = os.environ["OPENAI_API_KEY"]
+        print('')
+        cprint('Requesting....','white',attrs=['blink'])
 
-
-        availableResponses   = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
+        availableResponses   = openaiObject.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "system", "content": prompt}])
         self.currentResponse = availableResponses['choices'][0]['message']['content'].lstrip()
         self.fullDialogue    += prompt + ' \n' + self.currentResponse
+
+        os.system('clear')
         
         # -----------------VALIDATE DELIVERABLES 
 
@@ -152,8 +149,11 @@ class ProblemClassifier:
             print(self.currentResponse)
             print('Dict data')
             print(data)
-            cprint('Does this look correct?', 'yellow',attrs=['blink'])
-            input('DO YOU WANT TO CONTINUE??')
+            print('')
+            cprint('Does this look correct?', 'yellow',attrs=['bold'])
+            print('\n\n')
+            cprint('Continue?', 'white',attrs=['blink'])
+            input('')
         except:
             print(self.currentResponse)
             cprint('WARNING: Can not verify deliverables match', 'yellow',attrs=['blink'])

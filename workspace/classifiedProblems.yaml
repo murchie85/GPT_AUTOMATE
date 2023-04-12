@@ -1,77 +1,74 @@
 - DELIVERABLE: 1
   Solution:
-    - Use Python to create scripts for scraping forex prices from various sources
-    - Create a MongoDB database and collection to store the scraped forex prices
-    - Write functions to retrieve and store the scraped forex prices in the database
-    - Implement a basic prediction algorithm using historical data to predict next prices for the next five days
-    - Create a basic API endpoint to retrieve the predicted prices
-  Dependencies: Python, MongoDB
+    - Write functions for basic math operations such as addition, subtraction, multiplication, and division
+    - Take input from the user for two numbers and the desired operation
+    - Perform the operation using the corresponding function and display the result
+  Dependencies: N/A
   SharedState: N/A
   AdditionalNotes: N/A
   RUNTIME_INSTRUCTIONS:
-    FILENAME: forex_scraper.py
-    RELIES_ON: pymongo, requests, bs4
+    FILENAME: calculator.py
+    RELIES_ON: N/A
     IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 1
-    EXECUTION_COMMAND: python forex_scraper.py
+    EXECUTION_COMMAND: python calculator.py
     LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: pymongo, requests, bs4
+    LIBRARIES: N/A
 
 - DELIVERABLE: 2
   Solution:
-    - Create a frontend using React to display the scraped forex prices from the API endpoint
-    - Implement pagination and search functionality to filter and limit the number of displayed prices
-    - Integrate charting libraries to display graphs/chart of historical and predicted forex prices 
-  Dependencies: React
+    - Refactor the code into a class-based implementation for better organization
+    - Add functionality to handle edge cases such as division by zero and invalid inputs
+    - Allow the user to enter multiple operations in one session
+  Dependencies: N/A
   SharedState: N/A
-  AdditionalNotes: Uses existing API endpoint from Deliverable 1
+  AdditionalNotes: Imports calculator.py module from Deliverable 1
   RUNTIME_INSTRUCTIONS:
-    FILENAME: forex_display.js
-    RELIES_ON: axios, react-chartjs-2, react-redux
-    IS_LIBRARY: True
+    FILENAME: calculator2.py
+    RELIES_ON: calculator.py
+    IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 2
-    EXECUTION_COMMAND: N/A
-    LANGUAGE: JavaScript
+    EXECUTION_COMMAND: python calculator2.py
+    LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: axios, react-chartjs-2, react-redux
+    LIBRARIES: N/A
 
 - DELIVERABLE: 3
   Solution:
-    - Implement a user authentication system using Passport.js to allow registered users to save stocks and forex prices to their portfolio
-    - Write additional functions to manage user portfolio data in the database
-    - Add functionality for displaying user portfolio data
-  Dependencies: MongoDB, Node.js, Express, React
-  SharedState: Passport.js
-  AdditionalNotes: 
+    - Create a graphical user interface (GUI) using tkinter for a more user-friendly experience
+    - Add additional functions and buttons for advanced mathematical operations such as exponents, square roots, and trigonometry
+  Dependencies: tkinter
+  SharedState: N/A
+  AdditionalNotes: Imports calculator2.py module from Deliverable 2
   RUNTIME_INSTRUCTIONS:
-    FILENAME: user_authentication.js
-    RELIES_ON: passport, express-session, connect-mongo
-    IS_LIBRARY: True
+    FILENAME: calculator_gui.py
+    RELIES_ON: calculator2.py
+    IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 3
-    EXECUTION_COMMAND: N/A
-    LANGUAGE: JavaScript
+    EXECUTION_COMMAND: python calculator_gui.py
+    LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: passport, express-session, connect-mongo
+    LIBRARIES: tkinter
 
 - DELIVERABLE: 4
   Solution:
-    - Build a feature to allow users to compare and analyze different forex pairs
-    - Integrate third-party charting libraries to compare and graph forex pair data
-  Dependencies: React
+    - Add the ability to save and reload previous calculations from a file
+    - Allow the user to customize the GUI with themes and fonts
+  Dependencies: tkinter
   SharedState: N/A
-  AdditionalNotes: Uses existing API endpoint from Deliverable 1
+  AdditionalNotes: Imports calculator_gui.py module from Deliverable 3
   RUNTIME_INSTRUCTIONS:
-    FILENAME: compare_forex_pairs.js
-    RELIES_ON: chart.js, axios
-    IS_LIBRARY: True
+    FILENAME: calculator_gui2.py
+    RELIES_ON: calculator_gui.py
+    IS_LIBRARY: False
     LOCATION: root
     EXECUTION_ORDER: 4
-    EXECUTION_COMMAND: N/A
-    LANGUAGE: JavaScript
+    EXECUTION_COMMAND: python calculator_gui2.py
+    LANGUAGE: Python
     ENV_VARS: N/A
-    LIBRARIES: chart.js, axios
+    LIBRARIES: tkinter
 

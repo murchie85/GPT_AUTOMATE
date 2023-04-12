@@ -3,6 +3,7 @@ from termcolor      import colored, cprint
 from art            import *
 import problemClassifier
 from decomposer import *
+from getToken import *
 
 class agent_coordinator():
 	def __init__(self):
@@ -12,11 +13,14 @@ class agent_coordinator():
 		self.no_deliverables      = 0
 		self.currentDeliv         = 0
 		self.deliverablesArray    = []
+		self.openaiObject         = None
 
 	def mainLoop(self):
 
+		self.openaiObject = getOpenAPIKey()
+
 		if(self.state =='not started'):
-			self.classifier.get_requirements()
+			self.classifier.get_requirements(self.openaiObject)
 			if(self.classifier.problem_state == 'solvable_with_code'):
 				
 				# IMPORT METRICS 
@@ -26,14 +30,14 @@ class agent_coordinator():
 				self.state = 'decompose'
 				
 				print('Deliverables : ' + str(self.no_deliverables))
-				cprint('Complete! Proceeding to next step', 'white')
+				cprint('Complete! press any key to proceed to the next step', 'white')
 				input('')
 			else:
 				self.state = 'complete'
 				cprint('Complete! Problem is not solvable with code unfortunately', 'red')
 				input('')
 		if(self.state =='decompose'):
-			decompose()
+			decompose(self.openaiObject)
 
 os.system('clear')
 welcomeMessage=text2art("Welcome")

@@ -1,1 +1,1 @@
-Create me a platform that pulls in various forex prices via scraping, it will save these prices to a database and there will be some simple functions for predicting next prices for the next five days. 
+build me a simple calculator in python
